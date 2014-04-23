@@ -30,6 +30,7 @@
 
 #define LSYNCD_LIBNAME "lsyncd"
 #define LSYNCD_INOTIFYLIBNAME "inotify"
+#define LSYNCD_FSEVENTSAPILIBNAME "fsevents-api"
 
 /**
  * Lsyncd runtime configuration
@@ -154,6 +155,11 @@ extern void open_inotify(lua_State *L);
  */
 #ifdef WITH_FSEVENTS
 extern void open_fsevents(lua_State *L);
+#endif
+
+#ifdef LSYNCD_WITH_FSEVENTS_API
+extern void register_fsevents_api(lua_State *L);
+extern void open_fsevents_api(lua_State *L);
 #endif
 
 #endif
