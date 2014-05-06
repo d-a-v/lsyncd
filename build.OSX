@@ -1,1 +1,1 @@
-rm -rf CMakeFiles* CMakeCache.txt Makefile && cmake -DWITH_INOTIFY=0 -DWITH_FSEVENTS=1 . && make
+rm -rf CMakeCache.txt CMakeFile* Makefile && cmake -DWITH_INOTIFY=OFF -DWITH_FSEVENTS=ON . && make
