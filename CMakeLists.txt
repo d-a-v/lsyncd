@@ -23,16 +23,8 @@ if( WITH_INOTIFY )
 endif( WITH_INOTIFY )
 
 if( WITH_FSEVENTS )
-	set( LSYNCD_SRC ${LSYNCD_SRC} fsevents-api.c fsevents-bindapi.c )
+	set( LSYNCD_SRC ${LSYNCD_SRC} fsevents-api.c fsevents.c )
 	set( OSXLINK "-framework CoreFoundation" "-framework CoreServices" )
-
-#	option( XNU_DIR "Path to the xnu sources" )
-#
-#	if( NOT XNU_DIR/bsd/sys/fsevents.h )
-#		message( SEND_ERROR "Cannot find bsd/sys/fsevents.h in XNU_DIR" )
-#	endif( )
-#
-#	include_directories( ${XNU_DIR} )
 endif( WITH_FSEVENTS )
 
 

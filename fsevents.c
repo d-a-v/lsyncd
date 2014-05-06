@@ -126,7 +126,7 @@ fsevents_tidy(struct observance *obs)
 extern void
 open_fsevents(lua_State *L)
 {
-	printlogf(L, "Normal", "WIP: latency set to 1 regardless user's request");
+	printlogf(L, "Normal", "WIP: latency set to 1");
 
 	fsevents_api_start_thread(1);
 	fsevents_fd = fsevents_api_getfd();
