@@ -124,7 +124,7 @@ fsevents_tidy(struct observance *obs)
  * opens and initalizes fsevents.
  */
 extern void
-open_fsevents_api(lua_State *L)
+open_fsevents(lua_State *L)
 {
 	printlogf(L, "Normal", "WIP: latency set to 1 regardless user's request");
 
@@ -170,8 +170,8 @@ static const luaL_Reg lfseventslib[] = {
 /*
 | Registers the inotify functions.
 */
-extern void register_fsevents_api( lua_State *L )
+extern void register_fsevents( lua_State *L )
 {
-fprintf(stderr, "register fsevent-api\n");
-	luaL_register( L, LSYNCD_FSEVENTSAPILIBNAME, lfseventslib );
+fprintf(stderr, "register fsevent\n");
+	luaL_register( L, LSYNCD_FSEVENTSLIBNAME, lfseventslib );
 }

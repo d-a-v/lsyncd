@@ -23,15 +23,16 @@ if( WITH_INOTIFY )
 endif( WITH_INOTIFY )
 
 if( WITH_FSEVENTS )
-	set( LSYNCD_SRC ${LSYNCD_SRC} fsevents.c )
+	set( LSYNCD_SRC ${LSYNCD_SRC} fsevents-api.c fsevents-bindapi.c )
+	set( OSXLINK "-framework CoreFoundation" "-framework CoreServices" )
 
-	option( XNU_DIR "Path to the xnu sources" )
-
+#	option( XNU_DIR "Path to the xnu sources" )
+#
 #	if( NOT XNU_DIR/bsd/sys/fsevents.h )
 #		message( SEND_ERROR "Cannot find bsd/sys/fsevents.h in XNU_DIR" )
 #	endif( )
-
-	include_directories( ${XNU_DIR} )
+#
+#	include_directories( ${XNU_DIR} )
 endif( WITH_FSEVENTS )
 
 
@@ -89,7 +90,7 @@ add_custom_target( manpage ALL DEPENDS doc/lsyncd.1 )
 
 # compiling and linking it all together
 add_executable( lsyncd ${LSYNCD_SRC} )
-target_link_libraries( lsyncd ${LUA_LIBRARIES} )
+target_link_libraries( lsyncd ${LUA_LIBRARIES} ${OSXLINK} )
 
 install( TARGETS lsyncd RUNTIME DESTINATION bin )
 install( FILES doc/lsyncd.1 DESTINATION man)

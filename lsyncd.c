@@ -63,7 +63,6 @@ extern size_t defaults_size;
 #	error "needing at least one notification system. please rerun cmake"
 #endif
 #endif
-#endif
 
 /*
 | All monitors supported by this Lsyncd.
@@ -1941,11 +1940,11 @@ register_lsyncd( lua_State *L )
 
 #endif
 
-#ifdef LSYNCD_WITH_FSEVENTS_API
+#ifdef WITH_FSEVENTS
 
 	lua_getglobal( L, LSYNCD_LIBNAME );
-	register_fsevents_api( L );
-	lua_setfield( L, -2, LSYNCD_FSEVENTSAPILIBNAME );
+	register_fsevents( L );
+	lua_setfield( L, -2, LSYNCD_FSEVENTSLIBNAME );
 	lua_pop( L, 1 );
 
 #endif
@@ -2747,12 +2746,6 @@ main1( int argc, char *argv[] )
 #ifdef WITH_FSEVENTS
 
 	open_fsevents( L );
-
-#endif
-
-#ifdef LSYNCD_WITH_FSEVENTS_API
-
-	open_fsevents_api( L );
 
 #endif
 
